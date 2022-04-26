@@ -1,4 +1,4 @@
-FROM alpine:3.13.5@sha256:69e70a79f2d41ab5d637de98c1e0b055206ba40a8145e7bddb55ccc04e13cf8f
+FROM alpine
 
 ENV JTS3_SERVER_MOD_VERSION=6.5.7
 RUN echo "## Downloading ${JTS3_SERVER_MOD_VERSION} ##" && \
@@ -7,7 +7,7 @@ RUN echo "## Downloading ${JTS3_SERVER_MOD_VERSION} ##" && \
   rm -R /JTS3ServerMod/JTS3ServerMod-Windows* /JTS3ServerMod/documents/ /JTS3ServerMod/tools/
 
 
-FROM openjdk:8u212-jre-alpine3.9@sha256:b2ad93b079b1495488cc01375de799c402d45086015a120c105ea00e1be0fd52
+FROM eclipse-temurin:8-jre-alpine
 MAINTAINER Philipp Daniels <philipp.daniels@gmail.com>
 ENV JTS3_SERVER_MOD_VERSION=6.5.7
 
@@ -28,6 +28,6 @@ LABEL org.label-schema.schema-version="1.0" \
       org.label-schema.description="JTS3ServerMod is a Teamspeak 3 server bot written in Java language" \
       org.label-schema.url="https://www.stefan1200.de/forum/index.php?topic=2.0" \
       org.label-schema.usage="https://www.stefan1200.de/documentation/jts3servermod/readme.html" \
-      org.label-schema.vcs-url="https://github.com/phaldan/docker-JTS3ServerMod" \
+      org.label-schema.vcs-url="https://github.com/fanonwue/docker-JTS3ServerMod" \
       org.label-schema.vcs-ref=${VCS_REF} \
-      org.label-schema.vendor="PhALDan"
+      org.label-schema.vendor="fanonwue"
