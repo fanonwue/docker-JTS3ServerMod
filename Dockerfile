@@ -3,10 +3,14 @@ ARG VERSION="6.5.7_3"
 FROM alpine
 ARG VERSION
 ENV JTS3_SERVER_MOD_VERSION=$VERSION
-WORKDIR /JTS3ServerMod
+WORKDIR /tmp/dl
 RUN echo "## Downloading ${JTS3_SERVER_MOD_VERSION} ##" && \
   apk add --no-cache libarchive-tools && \
-  wget -qO- "https://www.stefan1200.de/downloads/JTS3ServerMod_${JTS3_SERVER_MOD_VERSION}.zip" | bsdtar -xf- && \
+  wget -q "https://www.stefan1200.de/downloads/JTS3ServerMod_${JTS3_SERVER_MOD_VERSION}.zip" -O JTS3.zip && \
+  unzip -q JTS3.zip
+
+WORKDIR /JTS3ServerMod
+RUN cp -R /tmp/dl/JTS3ServerMod/* . && \
   rm -R /JTS3ServerMod/JTS3ServerMod-Windows* /JTS3ServerMod/documents/ /JTS3ServerMod/tools/
 
 
